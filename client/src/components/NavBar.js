@@ -6,7 +6,7 @@ const NavBar = () => {
         <header>
             <nav className='flex justify-between py-4'>
                 <h1 className='text-xl font-semibold'>
-                    Note<span className='text-orange-600 ml-1'>Hub</span>
+                    Note<span className='text-orange-600'>eFy</span>
                 </h1>
                 <div>
                     <button>
