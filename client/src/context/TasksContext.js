@@ -14,14 +14,13 @@ const UseTasksProvider = ({ children }) => {
 
     // call tasks from db in a useeffect but memoize it
     useEffect(() => {
-        // const source = axios.CancelToken.source();
-        getTasks();
-        // return () => source.cancel();
+        const source = new axios.CancelToken.source();
+        getTasks(source);
+        return () => source.cancel();
     }, []);
 
     const getTasks = source => {
-        // api.get('/', { cancelToken: source.token })
-        api.get('/')
+        api.get('/', { cancelToken: source?.token })
             .then(({ data }) => {
                 setTasks(data);
             })
@@ -31,7 +30,6 @@ const UseTasksProvider = ({ children }) => {
     };
 
     const createTask = task => {
-        // setTasks(prev => [...prev, task]);
         api.post('/', task);
         getTasks();
     };

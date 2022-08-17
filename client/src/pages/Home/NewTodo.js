@@ -16,7 +16,7 @@ const NewTodo = () => {
     };
 
     const handleKeyDown = e => {
-        if (inputRef.current.value === '' || inputRef.current.value === null) return;
+        if (inputRef.current.value === '' || inputRef.current.value === null || inputRef.current.value.trim() === '[x]') return;
         if (e.key === 'Enter') {
             if (focus === 'name') {
                 inputRef.current.value = null;
